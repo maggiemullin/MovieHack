@@ -9,7 +9,7 @@ body {
     background-image: url("img/download.jpeg");
     background-size: contain;
     font-size: 20px;
-    box-sizing: border-box;
+
     height: 100%;
     display: flex;
     justify-content: center;
