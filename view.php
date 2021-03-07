@@ -29,20 +29,11 @@
     }
 
     echo "</tbody></table>";
-
-
-    $sql = "SELECT movie_title FROM movies;";
-    $statement = $db->prepare($sql);
-    $statement->execute();
-    $search_results = $statement->fetchAll();
-    echo "<ul>";
-    foreach($search_results as $results) {
-        echo "<li>" .$result['movie_title']. "</li>";
-    }
     //close the DB connection
-    $statement->closeCursor();
+     $statement->closeCursor();
+     ?>
 
-    ?>
+
     <div class="container">
     <h2> Search For Your Movie Titles: </h2>
             <form action="search_results.php" method="get">
@@ -58,6 +49,6 @@
             </form>
         </div>
 
-        $statement->closeCursor();
+
 
     <?php require('footer.php'); ?>
