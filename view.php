@@ -58,4 +58,6 @@
             </form>
         </div>
 
+        $statement->closeCursor();
+
     <?php require('footer.php'); ?>
