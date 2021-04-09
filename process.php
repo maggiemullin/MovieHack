@@ -5,10 +5,10 @@
     //create variables to store form data
 
     $network = filter_input(INPUT_POST, 'network');
-    $movie_title = filter_input(INPUT_POST, 'movietitle');
+    $movie_title = filter_input(INPUT_POST, 'movie_title');
     $genre = filter_input(INPUT_POST, 'genre');
-    $first_name = filter_input(INPUT_POST, 'fname');
-    $last_name = filter_input(INPUT_POST, 'lname');
+    $first_name = filter_input(INPUT_POST, 'first_name');
+    $last_name = filter_input(INPUT_POST, 'last_name');
     $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
     $review = filter_input(INPUT_POST, 'review');
     $id = null;

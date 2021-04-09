@@ -31,7 +31,7 @@
             $films = $statement->fetchAll();
             foreach($films as $film) :
                 $network = $film['network'];
-                $movie_title = $film['movietitle'];
+                $movie_title = $film['movie_title'];
                 $genre = $film['genre'];
                 $first_name = $film['first_name'];
                 $last_name = $film['last_name'];
@@ -54,7 +54,7 @@
                      </div>
 
                      <div class="form-group">
-                          <input type="text" name="movietitle" placeholder="Movie Title" class="form-control" value="<?php echo $movie_title; ?>">
+                          <input type="text" name="movie_title" placeholder="Movie Title" class="form-control" value="<?php echo $movie_title; ?>">
                     </div>
 
                     <div class="form-group">
@@ -62,11 +62,11 @@
                     </div>
 
                     <div class="form-group">
-                        <input type="text" name="fname" placeholder="First Name" class="form-control" value="<?php echo $first_name; ?>">
+                        <input type="text" name="first_name" placeholder="First Name" class="form-control" value="<?php echo $first_name; ?>">
                     </div>
 
                     <div class="form-group">
-                        <input type="text" name="lname" placeholder="Last Name" class="form-control" value="<?php echo $last_name; ?>">
+                        <input type="text" name="last_name" placeholder="Last Name" class="form-control" value="<?php echo $last_name; ?>">
                     </div>
 
                     <div class="form-group">
