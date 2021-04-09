@@ -6,18 +6,7 @@
 
     /** Validation */
 
-    session_start();
-    function error_handler ($errors) {
-        if (count($errors) > 0) {
-            $_SESSION['errors'] = $errors;
-            
-
-            header("Location: view.php");
-            exit();
-        }
-    }
-
-    $errors = [];
+    
 
     //Validate the recaptcha 
     if(!empty($_POST['recaptcha_response'])) {
