@@ -1,9 +1,9 @@
 <?php
 try{
 
-    $dsn = 'mysql:host=172.31.22.43;dbname=Mullin100104425';
-    $username = 'Mullin100104425';
-    $password = 'UQabtxmMN5'; //mamp users
+    $dsn = 'mysql:host=localhost;dbname=movie_hack';//'mysql:host=172.31.22.43;dbname=Mullin100104425';
+    $username = 'root'; //'Mullin100104425';
+    $password = 'root';  //'UQabtxmMN5'; //mamp users
 
     $db = new PDO($dsn, $username, $password);
     //echo "<p> Successfully connected </p>";

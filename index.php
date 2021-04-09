@@ -76,9 +76,20 @@
                     <div class="form-group">
                         <input type="text" name="review" placeholder="The Lowdown on the Movie" class="form-control" value="<?php echo $review; ?>">
                     </div>
+                     
+                    <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
 
                     <button type="submit" value="submit" name="submit" class="btn btn-primary btn-block">Submit</button>
                 </form>
                 </div>
+                <?php include_once('config.php') ?>
+                 <script src="https://www.google.com/recaptcha/api.js?render=<?= SITEKEY ?>"></script>
+                <script>
+                grecaptcha.ready(() => {
+                grecaptcha.execute("<?= SITEKEY ?>", { action: "view" })
+                .then(token => document.querySelector("#recaptchaResponse").value = token)
+                .catch(error => console.error(error));
+                });
+            </script>
             </main>
         <?php require('footer.php'); ?>

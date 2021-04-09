@@ -44,13 +44,13 @@
             $statement = $db->prepare($sql);
             //bind parameters
 
-            $statement->bindParam(':network', $network);
-            $statement->bindParam(':movietitle', $movie_title);
-            $statement->bindParam(':genre', $genre);
-            $statement->bindParam(':firstname', $first_name);
-            $statement->bindParam(':lastname', $last_name);
-            $statement->bindParam(':email', $email);
-            $statement->bindParam(':review', $review);
+            $statement->bindParam(':network', $network, PDO::PARAM_STR);
+            $statement->bindParam(':movietitle', $movie_title, PDO::PARAM_STR);
+            $statement->bindParam(':genre', $genre, PDO::PARAM_STR);
+            $statement->bindParam(':firstname', $first_name, PDO::PARAM_STR);
+            $statement->bindParam(':lastname', $last_name, PDO::PARAM_STR);
+            $statement->bindParam(':email', $email, PDO::PARAM_STR);
+            $statement->bindParam(':review', $review, PDO::PARAM_STR );
 
             if(!empty($id)) {
                 $statement->bindParam(':user_id', $id );
