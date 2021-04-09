@@ -32,8 +32,8 @@
             //execute
             $statement->execute();
             //use fetchAll method to store
-            $films = $statement->fetchAll();
-            foreach($films as $film) :
+            $form_values = $statement->fetchAll();
+            foreach($form_values as $film) :
                 $network = $film['network'];
                 $movie_title = $film['movie_title'];
                 $genre = $film['genre'];
@@ -51,7 +51,7 @@
              <div class="container">
                 <form action="process.php" method="post" novalidate>
 
-                    <input type="hidden" name="user_id" value="<?php echo $id; ?>">
+                    <input type="hidden" name="user_id" value="<?= $form_values['id'] ?? null ?>">
                     <div class="row">
                     <div class="form-group col-4">
                          <input type="text" name="network" placeholder="Network" class="form-control" require value="<?= $form_values['network'] ?? null ?>">
