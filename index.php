@@ -70,7 +70,7 @@
                     <div class="form-group col-4">
                         <input type="text" name="first_name" placeholder="First Name" class="form-control" require value="<?= $form_values['first_name'] ?? null ?>">
                     </div>
-                    </div>
+                   
 
                     <div class="form-group col-4">
                         <input type="text" name="last_name" placeholder="Last Name" class="form-control" require value="<?= $form_values['last_name'] ?? null ?>">
