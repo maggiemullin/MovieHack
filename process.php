@@ -16,7 +16,7 @@
           $response_data = json_decode($verify_response);
           if(!$response_data->success) {
             $errors[] = "Google reCaptcha failed: " . ($response_data->{'error-code'})[0];
-            error_handler($errors);
+            
           }
       }
 
@@ -34,7 +34,7 @@
     $id = null;
     $id = filter_input(INPUT_POST, 'user_id');
 
-     error_handler($errors);
+     
     //set up a flag variable
     $ok = true;
 
@@ -87,7 +87,7 @@
         }
         catch(PDOException $error) {
             $errors[] = $error->getMessage();
-            error_handler($errors);
+            
         }
     }
   
