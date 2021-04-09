@@ -45,35 +45,11 @@
     $id = null;
     $id = filter_input(INPUT_POST, 'user_id');
 
-
-      //validate the necessary fields are not empty 
-      $required_fields = [
-        'network',
-        'movie_title',
-        'genre',
-        'first_name',
-        'last_name',
-        'email',
-        'review',
-        'id'
-      ];
-
-       foreach ($required_fields as $field) {
-           if (empty($$field)) {
-               $human_field = str_replace("_", " ", $field);
-               $errors[] = "You cannot the the {$human_field} blank.";
-           }
-       }
-       
-       if ($email) {
-           $errors[] = "THe email isn't a valid format.";
-       }
-
-       error_handler($errors);
+     error_handler($errors);
     //set up a flag variable
     $ok = true;
 
-    $email = strtolower($email);
+    
 
     //validation for email address
 
