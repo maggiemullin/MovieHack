@@ -33,14 +33,14 @@
             $statement->execute();
             //use fetchAll method to store
             $form_values = $statement->fetchAll();
-            foreach($form_values as $film) :
-                $network = $film['network'];
-                $movie_title = $film['movie_title'];
-                $genre = $film['genre'];
-                $first_name = $film['first_name'];
-                $last_name = $film['last_name'];
-                $email = $film['email'];
-                $review= $film['review'];
+            foreach($form_values as $form_value) :
+                $network = $form_values['network'];
+                $movie_title = $form_value['movie_title'];
+                $genre = $form_value['genre'];
+                $first_name = $form_value['first_name'];
+                $last_name = $form_value['last_name'];
+                $email = $form_value['email'];
+                $review= $form_value['review'];
 
              endforeach;
              $statement->closeCursor();

@@ -20,11 +20,11 @@
     //creating the top of the table
     echo "<table class='table table-hover table-striped'><tbody>";
 
-    foreach($films as $film) {
-        echo "<tr><td>" . $film['network'] . "</td><td>" . $film['movie_title'] . $film['genre'] . "</td><td>" . $film['first_name'] . "</td><td>" . $film['last_name'] . "</td><td>" . $film['email'] . "</td><td>". $film['review'] . "</td><td>" . " </td>
-        <td><a href='delete.php?id=". $film['user_id'] . "'> Delete Review </a>
+    foreach($form_values as $form_value) {
+        echo "<tr><td>" . $form_value['network'] . "</td><td>" . $form_value['movie_title'] . $form_value['genre'] . "</td><td>" . $form_value['first_name'] . "</td><td>" . $form_value['last_name'] . "</td><td>" . $form_value['email'] . "</td><td>". $form_value['review'] . "</td>" . "
+        <td><a href='delete.php?id=". $form_value['user_id'] . "'> Delete Review </a>
         </td>
-        <td><a href='index.php?id=". $film['user_id'] . "'> Edit Review </a></td>
+        <td><a href='index.php?id=". $form_value['user_id'] . "'> Edit Review </a></td>
         </tr>";
     }
 
