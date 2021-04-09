@@ -1,9 +1,5 @@
 <?php require('header.php');
-    session_start();
-    
 
-    unset($_SESSION['form_values']);
-    
   //initialize variables
 
         $id = null;
@@ -32,10 +28,10 @@
             //execute
             $statement->execute();
             //use fetchAll method to store
-            $form_values = $statement->fetchAll();
+            $films = $statement->fetchAll();
             foreach($films as $film) :
                 $network = $film['network'];
-                $movie_title = $film['movie_title'];
+                $movie_title = $film['movietitle'];
                 $genre = $film['genre'];
                 $first_name = $film['first_name'];
                 $last_name = $film['last_name'];
@@ -48,60 +44,41 @@
         ?>
 
             <main>
-             <div class="container">
-                <form action="process.php" method="post" novalidate>
+             <div class="col">
+                <form action="process.php" method="post">
 
                     <input type="hidden" name="user_id" value="<?php echo $id; ?>">
-                    <div class="row">
-                    <div class="form-group col-4">
-                         <input type="text" name="network" placeholder="Network" class="form-control" require value="<?php echo $network; ?>">
-                     </div>
-
-                     <div class="form-group col-4">
-                          <input type="text" name="movie_title" placeholder="Movie Title" class="form-control" require value="<?php echo $movie_title; ?>">
-                    </div>
-            
-                    <div class="form-group col-4">
-                           <input type="text" name="genre" placeholder="Genre" class="form-control" require value="<?php echo $genre; ?>">
-                    </div>
-                    </div><!-- end of row -->
-
-                    <div class="row">
-                    <div class="form-group col-4">
-                        <input type="text" name="first_name" placeholder="First Name" class="form-control" require value="<?php echo $first_name; ?>">
-                    </div>
-                   
-
-                    <div class="form-group col-4">
-                        <input type="text" name="last_name" placeholder="Last Name" class="form-control" require value="<?php echo $last_name;  ?>">
-                    </div>
-
-                    <div class="form-group col-4">
-                        <input type="email" name="email" placeholder="Email" class="form-control" require value="<?php echo $email; ?>">
-                    </div>
-                    </div><!-- end of row -->
 
                     <div class="form-group">
-                        <input type="text" name="review" placeholder="The Lowdown on the Movie" require class="form-control" value="<?php echo $review; ?>">
+                         <input type="text" name="network" placeholder="Network" class="form-control" value="<?php echo $network; ?>">
+                     </div>
+
+                     <div class="form-group">
+                          <input type="text" name="movietitle" placeholder="Movie Title" class="form-control" value="<?php echo $movie_title; ?>">
                     </div>
 
-                    <!-- Add the recaptcha field -->
-                    <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
+                    <div class="form-group">
+                           <input type="text" name="genre" placeholder="Genre" class="form-control" value="<?php echo $genre; ?>">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" name="fname" placeholder="First Name" class="form-control" value="<?php echo $first_name; ?>">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" name="lname" placeholder="Last Name" class="form-control" value="<?php echo $last_name; ?>">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Email" class="form-control" value="<?php echo $email; ?>">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" name="review" placeholder="The Lowdown on the Movie" class="form-control" value="<?php echo $review; ?>">
+                    </div>
 
                     <button type="submit" value="submit" name="submit" class="btn btn-primary btn-block">Submit</button>
                 </form>
                 </div>
-
-                   <!-- Add the recaptcha scripts -->
-                <?php include_once('config.php'); ?>
-                 <script src="https://www.google.com/recaptcha/api.js?render=<?=SITEKEY ?>"></script> 
-                 <script>
-                     grecaptcha.ready(() => {
-                     grecaptcha.execute("<?=SITEKEY ?>", { action: "register" })
-                    .then(token => document.querySelector("#recaptchaResponse").value = token)
-                    .catch(error => console.error(error));
-                     });
-                 </script>
-
             </main>
         <?php require('footer.php'); ?>
