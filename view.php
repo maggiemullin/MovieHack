@@ -21,7 +21,7 @@
     echo "<table class='table table-hover table-striped'><tbody>";
 
     foreach($films as $film) {
-        echo "<tr><td>" . $film['network'] . "</td><td>" . $film['movie_title'] . $film['genre'] . "</td><td>" . $film['first_name'] . "</td><td>" . $film['last_name'] . "</td><td>" . $film['email'] . "</td><td>". $film['review'] . "</td><td>" . $record['location'] . "</td><td>" . $record['email'] .  "</td>
+        echo "<tr><td>" . $film['network'] . "</td><td>" . $film['movie_title'] . $film['genre'] . "</td><td>" . $film['first_name'] . "</td><td>" . $film['last_name'] . "</td><td>" . $film['email'] . "</td><td>". $film['review'] . "</td><td>" . " </td>
         <td><a href='delete.php?id=". $film['user_id'] . "'> Delete Review </a>
         </td>
         <td><a href='index.php?id=". $film['user_id'] . "'> Edit Review </a></td>
