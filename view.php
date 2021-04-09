@@ -15,7 +15,7 @@
 
     //use fetchAll to store results
 
-    $films = $statement->fetchAll();
+    $form_values = $statement->fetchAll();
 
     //creating the top of the table
     echo "<table class='table table-hover table-striped'><tbody>";
