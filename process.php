@@ -10,7 +10,7 @@
     function error_handler ($errors) {
         if (count($errors) > 0) {
             $_SESSION['errors'] = $errors;
-            $_SESSION['form_values'] = $_POST;
+            
 
             header("Location: view.php");
             exit();

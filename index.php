@@ -33,14 +33,14 @@
             $statement->execute();
             //use fetchAll method to store
             $form_values = $statement->fetchAll();
-            foreach($form_values as $form_value) :
-                $network = $form_values['network'];
-                $movie_title = $form_value['movie_title'];
-                $genre = $form_value['genre'];
-                $first_name = $form_value['first_name'];
-                $last_name = $form_value['last_name'];
-                $email = $form_value['email'];
-                $review= $form_value['review'];
+            foreach($films as $film) :
+                $network = $film['network'];
+                $movie_title = $film['movie_title'];
+                $genre = $film['genre'];
+                $first_name = $film['first_name'];
+                $last_name = $film['last_name'];
+                $email = $film['email'];
+                $review= $film['review'];
 
              endforeach;
              $statement->closeCursor();
@@ -51,38 +51,38 @@
              <div class="container">
                 <form action="process.php" method="post" novalidate>
 
-                    <input type="hidden" name="user_id" value="<?= $form_values['id'] ?? null ?>">
+                    <input type="hidden" name="user_id" value="<?php echo $id; ?>">
                     <div class="row">
                     <div class="form-group col-4">
-                         <input type="text" name="network" placeholder="Network" class="form-control" require value="<?= $form_values['network'] ?? null ?>">
+                         <input type="text" name="network" placeholder="Network" class="form-control" require value="<?php echo $network; ?>">
                      </div>
 
                      <div class="form-group col-4">
-                          <input type="text" name="movie_title" placeholder="Movie Title" class="form-control" require value="<?= $form_values['movie_title'] ?? null ?>">
+                          <input type="text" name="movie_title" placeholder="Movie Title" class="form-control" require value="<?php echo $movie_title; ?>">
                     </div>
             
                     <div class="form-group col-4">
-                           <input type="text" name="genre" placeholder="Genre" class="form-control" require value="<?= $form_values['genre'] ?? null ?>">
+                           <input type="text" name="genre" placeholder="Genre" class="form-control" require value="<?php echo $genre; ?>">
                     </div>
                     </div><!-- end of row -->
 
                     <div class="row">
                     <div class="form-group col-4">
-                        <input type="text" name="first_name" placeholder="First Name" class="form-control" require value="<?= $form_values['first_name'] ?? null ?>">
+                        <input type="text" name="first_name" placeholder="First Name" class="form-control" require value="<?php echo $first_name; ?>">
                     </div>
                    
 
                     <div class="form-group col-4">
-                        <input type="text" name="last_name" placeholder="Last Name" class="form-control" require value="<?= $form_values['last_name'] ?? null ?>">
+                        <input type="text" name="last_name" placeholder="Last Name" class="form-control" require value="<?php echo $last_name;  ?>">
                     </div>
 
                     <div class="form-group col-4">
-                        <input type="email" name="email" placeholder="Email" class="form-control" require value="<?= $form_values['email'] ?? null ?>">
+                        <input type="email" name="email" placeholder="Email" class="form-control" require value="<?php echo $email; ?>">
                     </div>
                     </div><!-- end of row -->
 
                     <div class="form-group">
-                        <input type="text" name="review" placeholder="The Lowdown on the Movie" require class="form-control" value="<?= $form_values['review'] ?? null ?>">
+                        <input type="text" name="review" placeholder="The Lowdown on the Movie" require class="form-control" value="<?php echo $review; ?>">
                     </div>
 
                     <!-- Add the recaptcha field -->
