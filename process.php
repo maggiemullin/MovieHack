@@ -47,11 +47,33 @@
 
 
       //validate the necessary fields are not empty 
+      $required_fields = [
+        'network',
+        'movie_title',
+        'genre',
+        'first_name',
+        'last_name',
+        'email',
+        'review',
+        'id'
+      ];
 
+       foreach ($required_fields as $field) {
+           if (empty($$field)) {
+               $human_field = str_replace("_", " ", $field);
+               $errors[] = "You cannot the the {$human_field} blank.";
+           }
+       }
+       
+       if ($email) {
+           $errors[] = "THe email isn't a valid format.";
+       }
 
-
+       error_handler($errors);
     //set up a flag variable
     $ok = true;
+
+    $email = strtolower($email);
 
     //validation for email address
 
@@ -64,6 +86,7 @@
         try {
             //connect to the database
             require('connect.php');
+            $conn = dbo();
             //set up our SQL query
 
             //if we have an id, we are editing
@@ -76,30 +99,30 @@
 
             }
             //call the prepare method of the PDO object
-            $statement = $db->prepare($sql);
+            $stmt = $conn->prepare($sql);
             //bind parameters
 
-            $statement->bindParam(':network', $network);
-            $statement->bindParam(':movie_title', $movie_title);
-            $statement->bindParam(':genre', $genre);
-            $statement->bindParam(':first_name', $first_name);
-            $statement->bindParam(':last_name', $last_name);
-            $statement->bindParam(':email', $email);
-            $statement->bindParam(':review', $review);
+            $stmt->bindParam(':network', $network);
+            $stmt->bindParam(':movie_title', $movie_title);
+            $stmt->bindParam(':genre', $genre);
+            $stmt->bindParam(':first_name', $first_name);
+            $stmt->bindParam(':last_name', $last_name);
+            $stmt->bindParam(':email', $email);
+            $stmt->bindParam(':review', $review);
 
             if(!empty($id)) {
                 $statement->bindParam(':user_id', $id );
             }
             //execute the query
             $statement->execute();
+            $_SESSION['successes'][] = "Your review has been added";
             //close the db connection
-            $statement->closeCursor();
+            exit();
             header('location:view.php');
         }
-        catch(PDOException $e) {
-            echo "<p> something broke </p>";
-            $error_message = $e->getMessage();
-            echo $error_message;
+        catch(PDOException $error) {
+            $errors[] = $error->getMessage();
+            error_handler($errors);
         }
     }
   

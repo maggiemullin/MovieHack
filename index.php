@@ -54,39 +54,54 @@
                     <input type="hidden" name="user_id" value="<?php echo $id; ?>">
                     <div class="row">
                     <div class="form-group col-4">
-                         <input type="text" name="network" placeholder="Network" class="form-control" value="<?= $form_values['network'] ?? null ?>">
+                         <input type="text" name="network" placeholder="Network" class="form-control" require value="<?= $form_values['network'] ?? null ?>">
                      </div>
 
                      <div class="form-group col-4">
-                          <input type="text" name="movie_title" placeholder="Movie Title" class="form-control" value="<?= $form_values['movie_title'] ?? null ?>">
+                          <input type="text" name="movie_title" placeholder="Movie Title" class="form-control" require value="<?= $form_values['movie_title'] ?? null ?>">
                     </div>
             
                     <div class="form-group col-4">
-                           <input type="text" name="genre" placeholder="Genre" class="form-control" value="<?= $form_values['genre'] ?? null ?>">
+                           <input type="text" name="genre" placeholder="Genre" class="form-control" require value="<?= $form_values['genre'] ?? null ?>">
                     </div>
                     </div><!-- end of row -->
 
                     <div class="row">
                     <div class="form-group col-4">
-                        <input type="text" name="first_name" placeholder="First Name" class="form-control" value="<?= $form_values['first_name'] ?? null ?>">
+                        <input type="text" name="first_name" placeholder="First Name" class="form-control" require value="<?= $form_values['first_name'] ?? null ?>">
                     </div>
                     </div>
 
                     <div class="form-group col-4">
-                        <input type="text" name="last_name" placeholder="Last Name" class="form-control" value="<?= $form_values['last_name'] ?? null ?>">
+                        <input type="text" name="last_name" placeholder="Last Name" class="form-control" require value="<?= $form_values['last_name'] ?? null ?>">
                     </div>
 
                     <div class="form-group col-4">
-                        <input type="email" name="email" placeholder="Email" class="form-control" value="<?= $form_values['email'] ?? null ?>">
+                        <input type="email" name="email" placeholder="Email" class="form-control" require value="<?= $form_values['email'] ?? null ?>">
                     </div>
                     </div><!-- end of row -->
 
                     <div class="form-group">
-                        <input type="text" name="review" placeholder="The Lowdown on the Movie" class="form-control" value="<?= $form_values['review'] ?? null ?>">
+                        <input type="text" name="review" placeholder="The Lowdown on the Movie" require class="form-control" value="<?= $form_values['review'] ?? null ?>">
                     </div>
+
+                    <!-- Add the recaptcha field -->
+                    <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
 
                     <button type="submit" value="submit" name="submit" class="btn btn-primary btn-block">Submit</button>
                 </form>
                 </div>
+
+                   <!-- Add the recaptcha scripts -->
+                <?php include_once('config.php'); ?>
+                 <script src="https://www.google.com/recaptcha/api.js?render=<?=SITEKEY ?>"></script> 
+                 <script>
+                     grecaptcha.ready(() => {
+                     grecaptcha.execute("<?=SITEKEY ?>", { action: "register" })
+                    .then(token => document.querySelector("#recaptchaResponse").value = token)
+                    .catch(error => console.error(error));
+                     });
+                 </script>
+
             </main>
         <?php require('footer.php'); ?>
