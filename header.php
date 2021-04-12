@@ -18,22 +18,20 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav mr-auto">
                             <li class="nav-item active">
-                                <a class="nav-link" href="index.php"> Add Your Review <span class="sr-only">(current)</span></a>
+                                <a class="nav-link" href="newMovie.php"> Add Your Review <span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="view.php">Check Out Your Reviews</a>
+                                <a class="nav-link" href="movies.php">Check Out Your Reviews</a>
                             </li>
                         </ul>
                         <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="register.php">Register</a>
+                            <a class="nav-link" href="logout.php">Log out</a>
                         </li>
-                        <li class="navbar-nav ml-auto">
-                            <a class="nav-link" href="login.php">Log In</a>
-                        </li>
+                        
                         </ul>
                     </div>
                 </nav>
                 <header>
-                    <h1 class="text-center"> Movie Hacks </h2> </br> <p class="text-center"> Stop Wasting Time Looking For A Movie, Reviews To Make Your Night More Enjoyable </p>
+                    <h1 class="text-center"> Movie Hacks </h2> 
                 </header>

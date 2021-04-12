@@ -13,12 +13,13 @@
 
     //connect to the db
     require('connect.php');
+    $conn = dbo();
 
     //set up our SQL query
-    $query = "SELECT movie_title FROM movies WHERE movie_title LIKE :search_term;";
+    $query = "SELECT title FROM movies WHERE title LIKE :search_term;";
 
     //prepare
-    $statement = $db->prepare($query);
+    $statement = $conn->prepare($query);
 
     //bind
     $statement->bindValue(':search_term', '%'.$search_term.'%');
@@ -31,7 +32,7 @@
     //check for results and display, if not, let the user know that no results found
     if($statement->rowCount() >= 1) {
         while($results = $statement->fetch()) {
-            echo "<li>" . $results['movie_title'] . "</li>";
+            echo "<li>" . $results['title'] . "</li>";
         }
     }
     else {

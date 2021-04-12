@@ -30,4 +30,3 @@
   }
 ?>
 
-<!-- Build the response boxes -->

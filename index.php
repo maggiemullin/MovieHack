@@ -1,95 +1,30 @@
-<?php require('header.php');
+<!DOCTYPE html>
+<html lang="en" class="home">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src='https://www.google.com/recaptcha/api.js' async defer ></script>
+    <link rel="stylesheet" href="main.css">
 
-  //initialize variables
+    <title>Movie Hack</title>
+  </head>
 
-        $id = null;
-        $network = null;
-        $movietitle = null;
-        $genre = null;
-        $firstname = null;
-        $lastname = null;
-        $email = null;
-        $review = null;
+  <main>
+    <!-- Include notifications -->
+    
+    <div class="container my-5">
+      <header>
+        <h1 class="display-4 text-center">Movie Hack</h1>
+        <p class="text-center">
+          <strong>Register</strong> share your reviews with everyone!
+        </p>
+        <a class="btn" href="register.php">Register</a>
+        <a class="btn" href="login.php">Login</a>
+      </header>
 
-
-        //check if user is editing
-
-        if(!empty($_GET['id']) && (is_numeric($_GET['id']))) {
-            //grab id and store in a variable
-            $id = filter_input(INPUT_GET, 'id');
-            //connect to db
-            require('connect.php');
-            //set up query
-            $sql = "SELECT * FROM movies WHERE user_id = :user_id;";
-            //prepare
-            $statement = $db->prepare($sql);
-            //bind
-            $statement->bindParam(':user_id', $id);
-            //execute
-            $statement->execute();
-            //use fetchAll method to store
-            $films = $statement->fetchAll();
-            foreach($films as $film) :
-                $network = $film['network'];
-                $movietitle = $film['movietitle'];
-                $genre = $film['genre'];
-                $firstname = $film['first_name'];
-                $lastname = $film['last_name'];
-                $email = $film['email'];
-                $review= $film['review'];
-
-             endforeach;
-             $statement->closeCursor();
-            }
-        ?>
-
-            <main>
-             <div class="col">
-                <form action="process.php" method="post">
-
-                    <input type="hidden" name="user_id" value="<?php echo $id; ?>">
-
-                    <div class="form-group">
-                         <input type="text" name="network" placeholder="Network" class="form-control" value="<?php echo $network; ?>">
-                     </div>
-
-                     <div class="form-group">
-                          <input type="text" name="movietitle" placeholder="Movie Title" class="form-control" value="<?php echo $movietitle; ?>">
-                    </div>
-
-                    <div class="form-group">
-                           <input type="text" name="genre" placeholder="Genre" class="form-control" value="<?php echo $genre; ?>">
-                    </div>
-
-                    <div class="form-group">
-                        <input type="text" name="fname" placeholder="First Name" class="form-control" value="<?php echo $firstname; ?>">
-                    </div>
-
-                    <div class="form-group">
-                        <input type="text" name="lname" placeholder="Last Name" class="form-control" value="<?php echo $lastname; ?>">
-                    </div>
-
-                    <div class="form-group">
-                        <input type="email" name="email" placeholder="Email" class="form-control" value="<?php echo $email; ?>">
-                    </div>
-
-                    <div class="form-group">
-                        <input type="text" name="review" placeholder="The Lowdown on the Movie" class="form-control" value="<?php echo $review; ?>">
-                    </div>
-                     
-                    <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
-
-                    <button type="submit" value="submit" name="submit" class="btn btn-primary btn-block">Submit</button>
-                </form>
-                </div>
-                <?php include_once('config.php') ?>
-                 <script src="https://www.google.com/recaptcha/api.js?render=<?= SITEKEY ?>"></script>
-                <script>
-                grecaptcha.ready(() => {
-                grecaptcha.execute("<?= SITEKEY ?>", { action: "view" })
-                .then(token => document.querySelector("#recaptchaResponse").value = token)
-                .catch(error => console.error(error));
-                });
-            </script>
-            </main>
-        <?php require('footer.php'); ?>
+      <section class="mb-5">
+      </section>
+    </div>
+</main>
+</html>
